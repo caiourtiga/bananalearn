@@ -1,0 +1,46 @@
+baseURL: http://localhost/
+title: Bananar
+# Disable taxonomy pages (disables categories and tags folders)
+disableKinds:
+- taxonomy
+- taxonomyTerm
+# for xml output
+languageCode: "pt-br"
+# for website
+defaultContentLanguage: "pt-br"
+languages:
+  pt-br:
+    weight: 1
+
+params:
+  Description: Bananas are great
+
+# controls number of pages displayed on list pages
+paginate: 5
+# controls the summary length on list pages
+summaryLength: 7
+
+# menu links via config file
+menu:
+  main:
+  - name: Instagram
+    url: https://www.instagram.com/banana/
+    weight: 90
+    params:
+      blank: true
+  
+  - name: WhatsApp
+    url: https://web.whatsapp.com/
+    weight: 110
+    params:
+      blank: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+module:
+    module.mounts:
+      source: "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+      target: "assets/js/bootstrap.bundle.min.js"

@@ -1,0 +1,59 @@
+{{ define "main" }}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<body>
+  
+  <div> 
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+          {{ $images := .Resources.ByType "image" }}
+          {{ $ratio := (slice 3 2) }}
+          <div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              {{ range $index, $value := $images }}
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" {{ if eq
+                $index 0 }}class="active" aria-current="true" {{ end }}aria-label="Slide {{ add $index 1}}"></button>
+              {{ end }}
+            </div>
+            <div class="carousel-inner" style= "background: #777 center/contain no-repeat;" >
+              {{ range $index, $value := $images }}
+              {{ $width := $value.Width }}
+              {{ $heightRatio := div (index $ratio 1 | float) (index $ratio 0 | float) }}
+              {{ $height := mul $width $heightRatio | int }}
+              {{ $fill := $value.Fill (printf "%dx%d" $width $height) }}
+              <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+                <img src="{{ $fill.RelPermalink }}" class="d-block w-100 img-fluid" alt="Slide {{ add $index 1}}">
+              </div>
+              {{ end }}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61420.4539821161!2d-48.15537110712892!3d-15.815635878432412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935bcd229f2c5d7f%3A0x42b4ef8fd5c072fb!2sFruttiFor%20Bananas!5e0!3m2!1spt-BR!2sbr!4v1675734224564!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    <br>
+    <br>
+    <h2 style="text-align:center">Banana town</h2>
+  </div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+</html>
+{{ end }}

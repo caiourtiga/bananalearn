@@ -1,0 +1,16 @@
+{
+  "name": "zjamsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "dev": "hugo server --disableFastRender",
+    "gg": "hugo --cleanDestinationDir --gc --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
